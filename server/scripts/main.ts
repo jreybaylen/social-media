@@ -4,30 +4,13 @@ import * as path from 'path'
 import mongoose from 'mongoose'
 import * as morgan from 'morgan'
 import * as dotenv from 'dotenv'
-import * as multer from 'multer'
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
 
+import userRoutes from '@routes/user'
+import authRouter from '@routes/auth'
+
 const app = express()
-const storage = multer.diskStorage({
-    destination (
-        _: express.Request,
-        __: object,
-        next: (param: any, storage: string) => void
-    ) {
-        next(null, 'public/assets')
-    },
-    filename (
-        _: express.Request,
-        file: {
-            originalname: string
-        },
-        next: (param: any, storage: string) => void
-    ) {
-        next(null, file.originalname)
-    }
-})
-const upload = multer({ storage })
 
 dotenv.config()
 app.use(cors())
@@ -56,6 +39,8 @@ app.use(
         path.join(__dirname, 'public/assets')
     )
 )
+app.use('/user', userRoutes)
+app.use('/auth', authRouter)
 
 mongoose
     .connect(

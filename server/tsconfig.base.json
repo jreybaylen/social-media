@@ -2,7 +2,12 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            
+            "@utils/*": [ "utils/*" ],
+            "@routes/*": [ "routes/*" ],
+            "@models/*": [ "models/*" ],
+            "@scripts/*": [ "scripts/*" ],
+            "@interfaces/*": [ "interfaces/*" ],
+            "@controllers/*": [ "controllers/*" ],
         }
     }
 }

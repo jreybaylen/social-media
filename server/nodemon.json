@@ -2,6 +2,7 @@
     "watch": [
         "controllers/*",
         "interfaces/*",
+        "middlewares/*",
         "models/*",
         "routes/*",
         "scripts/*",

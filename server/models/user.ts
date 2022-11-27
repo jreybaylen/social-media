@@ -10,7 +10,7 @@ export interface UserProps {
     picturePath: string
     impressions: string
     viewedProfile: string
-    friends: Partial<Array<UserProps>>
+    friends: Array<string | undefined>
 }
 
 const UserSchema = new Schema<UserProps>(

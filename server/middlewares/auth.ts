@@ -5,7 +5,7 @@ import type { JwtPayload } from 'jsonwebtoken'
 import type { Request, Response, NextFunction } from 'express'
 
 export function verifyToken (
-    req: Request & { user: JwtPayload | string },
+    req: Request & Partial<{ user: JwtPayload | string }>,
     res: Response,
     next: NextFunction
 ) {

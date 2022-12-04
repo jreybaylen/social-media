@@ -3,7 +3,6 @@
         "baseUrl": ".",
         "paths": {
             "@controllers/*": [ "controllers/*" ],
-            "@interfaces/*": [ "interfaces/*" ],
             "@middlewares/*": [ "middlewares/*" ],
             "@models/*": [ "models/*" ],
             "@routes/*": [ "routes/*" ],

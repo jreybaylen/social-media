@@ -4,8 +4,12 @@ import jwt from 'jsonwebtoken'
 import UserModel from '@models/user'
 
 import type { MongooseError } from 'mongoose'
-import { SignInProps } from '@interfaces/auth'
 import type { Request, Response } from 'express'
+
+type SignInProps = {
+    email: string
+    password: string
+}
 
 export async function accountValidator (
     req: Request<{}, {}, SignInProps>,

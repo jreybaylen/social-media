@@ -9,6 +9,7 @@ import * as bodyParser from 'body-parser'
 
 import userRoutes from '@routes/user'
 import authRouter from '@routes/auth'
+import postsRouter from '@routes/auth'
 
 const app = express()
 
@@ -39,8 +40,9 @@ app.use(
         path.join(__dirname, 'public/assets')
     )
 )
-app.use('/user', userRoutes)
 app.use('/auth', authRouter)
+app.use('/user', userRoutes)
+app.use('/posts', postsRouter)
 
 mongoose
     .connect(

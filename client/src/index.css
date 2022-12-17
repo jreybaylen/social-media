@@ -1,3 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './theme/default.css';
+
+* {
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-family: 'Axiforma-Regular';
+}

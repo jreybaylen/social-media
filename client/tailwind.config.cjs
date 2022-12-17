@@ -2,10 +2,21 @@
 module.exports = {
 	content: [
 		'./index.html',
-		'./src/**/*.{js,ts,jsx,tsx}',
+		'./src/**/*.tsx'
 	],
 	theme: {
-		extend: {},
+		screens: {
+			sm: '480px',
+			md: '768ox',
+			lg: '976px',
+			xl: '1440px'
+		},
+		fontFamily: {
+			axiformaRegular: 'var(--font-regular)',
+			axiformaSemibold: 'var(--font-semibold)',
+			axiformaBold: 'var(--font-bold)'
+		},
+		extend: {}
 	},
-	plugins: [],
+	plugins: []
 }

@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    ascent-override: 100%;
+    font-family: 'Axiforma-Regular';
+    src: url('/fonts/Axiforma-Regular.otf');
+}
+
+@font-face {
+    ascent-override: 100%;
+    font-family: 'Axiforma-SemiBold';
+    src: url('/fonts/Axiforma-SemiBold.otf');
+}
+
+@font-face {
+    ascent-override: 100%;
+    font-family: 'Axiforma-Bold';
+    src: url('/fonts/Axiforma-Bold.otf');
+}
+
+:root {
+    --text-color: #505050;
+    --font-regular: 'Axiforma-Regular';
+    --font-semibold: 'Axiforma-SemiBold';
+    --font-bold: 'Axiforma-Bold';
+}

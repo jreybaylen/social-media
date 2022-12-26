@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useRef, useState, ChangeEvent, FormEvent, MutableRefObject } from 'react'
+import { useRef, useState, ChangeEvent, FormEvent } from 'react'
 
 type UserInfo = {
     lastName: string
@@ -58,9 +58,10 @@ export function SignUpPage (): JSX.Element {
 
     return (
         <main
-            className="max-w-[450px] mt-[5%] mx-auto p-5 shadow-md border-[1px] rounded-md"
+            className="max-w-[450px] mt-[3%] mx-auto p-5 shadow-md border-[1px] rounded-md"
         >
             <h1
+                data-testid="sign-up-heading"
                 className="mt-2 mb-5 font-axiformaSemibold text-[26px]"
             >
                 Sign Up
@@ -68,6 +69,7 @@ export function SignUpPage (): JSX.Element {
             <form
                 autoComplete="off"
                 onSubmit={ handleSubmit }
+                data-testid="sign-up-form"
             >
                 <div
                     className="mb-3"
@@ -84,6 +86,7 @@ export function SignUpPage (): JSX.Element {
                         ref={ photoRef }
                         name="picturePath"
                         placeholder="e.g John"
+                        data-testid="sign-up-photo"
                         onChange={ handleChangeInput }
                         className="cursor-pointer px-3 py-2 mt-1 w-full border-[1px] rounded file:cursor-pointer file:mr-4 file:font-axiformaRegular file:py-2 file:px-4 file:rounded-full file:border-0"
                     />
@@ -103,6 +106,7 @@ export function SignUpPage (): JSX.Element {
                         name="firstName"
                         placeholder="e.g John"
                         onChange={ handleChangeInput }
+                        data-testid="sign-up-firstName"
                         value={ USER_INFO?.firstName || '' }
                         className="px-3 py-2 mt-1 w-full border-[1px] rounded"
                     />
@@ -121,6 +125,7 @@ export function SignUpPage (): JSX.Element {
                         id="lastName"
                         name="lastName"
                         placeholder="e.g Doe"
+                        data-testid="sign-up-lastName"
                         onChange={ handleChangeInput }
                         value={ USER_INFO?.lastName || '' }
                         className="px-3 py-2 mt-1 w-full border-[1px] rounded"
@@ -139,6 +144,7 @@ export function SignUpPage (): JSX.Element {
                         id="email"
                         type="email"
                         name="email"
+                        data-testid="sign-up-email"
                         onChange={ handleChangeInput }
                         value={ USER_INFO?.email || '' }
                         placeholder="e.g john.doe@gmail.com"
@@ -159,6 +165,7 @@ export function SignUpPage (): JSX.Element {
                         id="password"
                         name="password"
                         placeholder="e.g *******"
+                        data-testid="sign-up-password"
                         onChange={ handleChangeInput }
                         value={ USER_INFO?.password || '' }
                         className="px-3 py-2 mt-1 w-full border-[1px] rounded tracking-widest"
@@ -178,6 +185,7 @@ export function SignUpPage (): JSX.Element {
                         id="location"
                         name="location"
                         placeholder="e.g New York"
+                        data-testid="sign-up-location"
                         onChange={ handleChangeInput }
                         value={ USER_INFO?.location || '' }
                         className="px-3 py-2 mt-1 w-full border-[1px] rounded"
@@ -197,6 +205,7 @@ export function SignUpPage (): JSX.Element {
                         id="occupation"
                         name="occupation"
                         onChange={ handleChangeInput }
+                        data-testid="sign-up-occupation"
                         value={ USER_INFO?.occupation || '' }
                         placeholder="e.g Lead Software Engineer"
                         className="px-3 py-2 mt-1 w-full border-[1px] rounded"

@@ -550,6 +550,14 @@ video {
   margin-left: auto;
 }
 
+.mt-\[2\%\] {
+  margin-top: 2%;
+}
+
+.mt-\[3\%\] {
+  margin-top: 3%;
+}
+
 .flex {
   display: flex;
 }

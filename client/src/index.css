@@ -1,7 +1,12 @@
 @import './theme/default.css';
 
 * {
-    color: var(--text-color);
     box-sizing: border-box;
+    color: var(--text-color);
     font-family: 'Axiforma-Regular';
+}
+
+button:hover {
+    color: var(--white);
+    background: linear-gradient(90.11deg, var(--bg-primary) 2.54%, var(--bg-tertiary) 99.88%)
 }

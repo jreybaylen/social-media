@@ -1,12 +1,15 @@
+import { useNavigate, Link } from 'react-router-dom'
+
 export function Navbar (): JSX.Element {
-    const handleSignUp = () => {
-
-    }
-    const handleSignIn = () => {
-
-    }
+    const navigate = useNavigate()
     const handleSignOut = () => {
-        
+        alert('Sign Out')
+    }
+    const handleClickLogo = () => {
+        navigate(
+            '/',
+            { replace: true }
+        )
     }
 
     return (
@@ -17,7 +20,8 @@ export function Navbar (): JSX.Element {
                 className="flex flex-row max-w-5xl w-full m-auto items-center"
             >
                 <h1
-                    className="font-axiformaBold text-[30px]"
+                    onClick={ handleClickLogo }
+                    className="font-axiformaBold text-[30px] cursor-pointer"
                 >
                     SocialMedia
                 </h1>
@@ -25,24 +29,33 @@ export function Navbar (): JSX.Element {
                     className="ml-auto flex flex-row items-center"
                 >
                     <li>
-                        <button>
+                        <button
+                            onClick={ handleSignOut }
+                            className="px-4 py-2 rounded-md"
+                        >
                             Sign Out
                         </button>
                     </li>
                     <li
                         className="p-4"
                     >
-                        <button>
-                            Sign Up
-                        </button>
+                        <Link
+                            replace
+                            to="/sign-in"
+                        >
+                            Sign In
+                        </Link>
                     </li>
                     <li>|</li>
                     <li
                         className="p-4"
                     >
-                        <button>
-                            Sign In
-                        </button>
+                        <Link
+                            replace
+                            to="/sign-up"
+                        >
+                            Sign Up
+                        </Link>
                     </li>
                 </ul>
             </nav>

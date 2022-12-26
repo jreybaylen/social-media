@@ -21,6 +21,11 @@
 }
 
 :root {
+    --bg-primary: #1f64b1;
+    --bg-secondary: #4d96d1;
+    --bg-tertiary: #0f4888;
+
+    --white: #fff;
     --text-color: #505050;
     --font-regular: 'Axiforma-Regular';
     --font-semibold: 'Axiforma-SemiBold';

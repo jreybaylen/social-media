@@ -30,7 +30,7 @@ postsRouter.patch(
 postsRouter.post(
     '/create',
     verifyToken,
-    upload.single('picture'),
+    upload.single('picturePath'),
     createFeedPost
 )
 

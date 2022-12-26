@@ -1,5 +1,5 @@
-import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import * as bcrypt from 'bcrypt'
 
 import UserModel from '@models/user'
 

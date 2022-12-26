@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt'
+import * as bcrypt from 'bcrypt'
 
 import UserModel from '@models/user'
 
@@ -26,6 +26,7 @@ export async function accountRegistration (
             new UserModel({
                 ...rest,
                 password: passwordHash,
+                picturePath: req.file?.filename,
                 impressions: Math.floor(Math.random() * 10000),
                 viewedProfile: Math.floor(Math.random() * 10000)
             })

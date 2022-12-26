@@ -14,6 +14,7 @@
     "@types/cors": "^2.8.12",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/morgan": "^1.9.3",
+    "@types/uuid": "^9.0.0",
     "nodemon": "^2.0.20"
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "multer-gridfs-storage": "^5.0.2",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "uuid": "^9.0.0"
   }
 }

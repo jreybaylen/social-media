@@ -13,7 +13,7 @@ const userRouter = Router()
 
 userRouter.post(
     '/register',
-    upload.single('picture'),
+    upload.single('picturePath'),
     accountRegistration
 )
 userRouter.get(

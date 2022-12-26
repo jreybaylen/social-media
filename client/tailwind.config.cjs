@@ -16,6 +16,9 @@ module.exports = {
 			axiformaSemibold: 'var(--font-semibold)',
 			axiformaBold: 'var(--font-bold)'
 		},
+		backgroundColor: {
+			secondary: 'var(--bg-secondary)'
+		},
 		extend: {}
 	},
 	plugins: []

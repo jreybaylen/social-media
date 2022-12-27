@@ -522,8 +522,8 @@ video {
   margin-right: auto;
 }
 
-.mt-\[5\%\] {
-  margin-top: 5%;
+.mt-\[3\%\] {
+  margin-top: 3%;
 }
 
 .mt-2 {
@@ -548,14 +548,6 @@ video {
 
 .ml-auto {
   margin-left: auto;
-}
-
-.mt-\[2\%\] {
-  margin-top: 2%;
-}
-
-.mt-\[3\%\] {
-  margin-top: 3%;
 }
 
 .flex {

@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken'
 import * as bcrypt from 'bcrypt'
+import * as jwt from 'jsonwebtoken'
 
 import UserModel from '@models/user'
 
@@ -29,13 +29,13 @@ export async function accountValidator (
                     process.env.SECRET_KEY as string
                 )
                 
-                res.status(200).json({
+                return res.status(200).json({
                     token,
                     user: restUser
                 })
             }
 
-            res.status(400).json({
+            return res.status(400).json({
                 error: 'Invalid Credentials'
             })
         }

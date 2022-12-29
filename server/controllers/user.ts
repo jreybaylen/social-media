@@ -69,7 +69,7 @@ export async function accountFriends (
                 )
             )
             
-            res.status(200).json(friends)
+            return res.status(200).json(friends)
         }
 
         res.status(400).json({

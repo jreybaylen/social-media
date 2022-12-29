@@ -62,7 +62,7 @@ export async function feedPostLike (
                 { new: true }
             )
 
-            res.status(200).json(updatedPost)
+            return res.status(200).json(updatedPost)
         }
 
         res.status(500).json({

@@ -11,7 +11,8 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            '@pages': path.resolve(__dirname, 'src/pages')
+            '@pages': path.resolve(__dirname, 'src/pages'),
+            '@hooks': path.resolve(__dirname, 'src/hooks')
         }
     }
 })

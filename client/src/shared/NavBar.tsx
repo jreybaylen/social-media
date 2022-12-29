@@ -1,9 +1,18 @@
 import { useNavigate, Link } from 'react-router-dom'
 
+import { useAuth } from '@hooks/auth'
+
 export function Navbar (): JSX.Element {
     const navigate = useNavigate()
-    const handleSignOut = () => {
-        alert('Sign Out')
+    const { AUTH_USER, queryClient } = useAuth()
+    const handleSignOut = async () => {
+        await queryClient.resetQueries({
+            queryKey: [ 'authUser' ]
+        })
+        navigate(
+            '/sign-in',
+            { replace: true }
+        )
     }
     const handleClickLogo = () => {
         navigate(
@@ -28,35 +37,40 @@ export function Navbar (): JSX.Element {
                 <ul
                     className="ml-auto flex flex-row items-center"
                 >
-                    <li>
-                        <button
-                            onClick={ handleSignOut }
-                            className="px-4 py-2 rounded-md"
-                        >
-                            Sign Out
-                        </button>
-                    </li>
-                    <li
-                        className="p-4"
-                    >
-                        <Link
-                            replace
-                            to="/sign-in"
-                        >
-                            Sign In
-                        </Link>
-                    </li>
-                    <li>|</li>
-                    <li
-                        className="p-4"
-                    >
-                        <Link
-                            replace
-                            to="/sign-up"
-                        >
-                            Sign Up
-                        </Link>
-                    </li>
+                    { Boolean(AUTH_USER) ? (
+                        <li>
+                            <button
+                                onClick={ handleSignOut }
+                                className="px-4 py-2 rounded-md border-[1px]"
+                            >
+                                Sign Out
+                            </button>
+                        </li>
+                    ) : (
+                        <>
+                            <li
+                                className="p-4"
+                            >
+                                <Link
+                                    replace
+                                    to="/sign-in"
+                                >
+                                    Sign In
+                                </Link>
+                            </li>
+                            <li>|</li>
+                            <li
+                                className="p-4"
+                            >
+                                <Link
+                                    replace
+                                    to="/sign-up"
+                                >
+                                    Sign Up
+                                </Link>
+                            </li>
+                        </>
+                    ) }
                 </ul>
             </nav>
         </header>

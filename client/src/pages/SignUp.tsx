@@ -29,6 +29,7 @@ export function SignUpPage (): JSX.Element {
 
         try {
             const FORM_DATA = new FormData()
+            const { VITE_API_URL } = import.meta.env
 
             for (let USER_INFO_KEY in USER_INFO) {
                 FORM_DATA.append(
@@ -38,7 +39,7 @@ export function SignUpPage (): JSX.Element {
             }
 
             await axios.post(
-                `${ import.meta.env.VITE_API_URL }/user/register`,
+                `${ VITE_API_URL }/user/register`,
                 USER_INFO,
                 {
                     headers: {

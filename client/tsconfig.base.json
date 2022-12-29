@@ -5,6 +5,7 @@
             "@assets/*": [ "src/assets/*" ],
             "@components/*": [ "src/components/*" ],
             "@containers/*": [ "src/containers/*" ],
+            "@hooks/*": [ "src/hooks/*" ],
             "@pages/*": [ "src/pages/*" ],
             "@routes/*": [ "src/routes/*" ],
             "@shared/*": [ "src/shared/*" ],

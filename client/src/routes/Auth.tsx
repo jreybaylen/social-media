@@ -1,12 +1,14 @@
 import { useEffect } from 'react'
 import { useNavigate, Outlet } from 'react-router-dom'
 
+import { useAuth } from '@hooks/auth'
+
 export function AuthRoute (): JSX.Element {
     const navigate = useNavigate()
-    const user = false
+    const { AUTH_USER } = useAuth()
 
     useEffect(() => {
-        if (!user) {
+        if (!Boolean(AUTH_USER)) {
             navigate(
                 '/sign-in',
                 { replace: true }
@@ -19,7 +21,7 @@ export function AuthRoute (): JSX.Element {
             className="max-w-5xl w-full mt-5 mx-auto"
         >
             <Outlet
-                context={ user }
+                context={ AUTH_USER }
             />
         </main>
     )

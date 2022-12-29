@@ -38,7 +38,7 @@ export function SignUpPage (): JSX.Element {
             }
 
             await axios.post(
-                'http://localhost:2022/user/register',
+                `${ import.meta.env.VITE_API_URL }/user/register`,
                 USER_INFO,
                 {
                     headers: {

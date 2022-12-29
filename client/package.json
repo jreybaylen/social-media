@@ -6,8 +6,8 @@
   "scripts": {
     "test": "vitest",
     "preview": "vite preview",
-    "dev": "vite & yarn tailwind --watch",
-    "build": "tsc && vite build & NODE_ENV=production yarn tailwind --minify",
+    "dev": "vite --mode development & yarn tailwind --watch",
+    "build": "tsc && vite build --mode production & NODE_ENV=production yarn tailwind --minify",
     "tailwind": "npx tailwindcss -i ./src/index.css -o ./public/tailwind.css"
   },
   "dependencies": {

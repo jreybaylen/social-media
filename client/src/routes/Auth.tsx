@@ -1,20 +1,18 @@
-import { useEffect } from 'react'
-import { useNavigate, Outlet } from 'react-router-dom'
+import { Outlet, Navigate } from 'react-router-dom'
 
 import { useAuth } from '@hooks/auth'
 
 export function AuthRoute (): JSX.Element {
-    const navigate = useNavigate()
     const { AUTH_USER } = useAuth()
 
-    useEffect(() => {
-        if (!Boolean(AUTH_USER)) {
-            navigate(
-                '/sign-in',
-                { replace: true }
-            )
-        }
-    }, [])
+    if (!Boolean(AUTH_USER)) {
+        return (
+            <Navigate
+                replace
+                to="/sign-in"
+            />
+        )
+    }
 
     return (
         <main

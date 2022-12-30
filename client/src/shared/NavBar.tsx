@@ -14,12 +14,6 @@ export function Navbar (): JSX.Element {
             { replace: true }
         )
     }
-    const handleClickLogo = () => {
-        navigate(
-            '/',
-            { replace: true }
-        )
-    }
 
     return (
         <header
@@ -28,11 +22,13 @@ export function Navbar (): JSX.Element {
             <nav
                 className="flex flex-row max-w-5xl w-full m-auto items-center"
             >
-                <h1
-                    onClick={ handleClickLogo }
-                    className="font-axiformaBold text-[30px] cursor-pointer"
-                >
-                    SocialMedia
+                <h1>
+                    <Link
+                        to={ Boolean(AUTH_USER) ? '/' : '#' }
+                        className="font-axiformaBold text-[30px]"
+                    >
+                        SocialMedia
+                    </Link>
                 </h1>
                 <ul
                     className="ml-auto flex flex-row items-center"

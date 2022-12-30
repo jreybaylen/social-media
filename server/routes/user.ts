@@ -12,7 +12,7 @@ import {
 const userRouter = Router()
 
 userRouter.post(
-    '/register',
+    '/sign-up',
     upload.single('picturePath'),
     accountRegistration
 )

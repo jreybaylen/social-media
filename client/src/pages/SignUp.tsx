@@ -42,7 +42,7 @@ export function SignUpPage (): JSX.Element {
             }
 
             await axios.post(
-                `${ VITE_API_URL }/user/register`,
+                `${ VITE_API_URL }/user/sign-up`,
                 USER_INFO,
                 {
                     headers: {

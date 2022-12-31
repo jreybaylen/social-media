@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { toast } from 'react-toastify'
+import { useMutation } from '@tanstack/react-query'
 import { useRef, useState, ChangeEvent, FormEvent } from 'react'
 
 import FormInput from '@components/Input'
@@ -17,6 +19,34 @@ type UserInfo = {
 export function SignUpPage (): JSX.Element {
     const photoRef = useRef<HTMLInputElement>(null)
     const [ USER_INFO, setUserInfo ] = useState<UserInfo>()
+    const mutation = useMutation({
+        async mutationFn (USER_DATA: UserInfo) {
+            const { VITE_API_URL } = import.meta.env
+            return await axios.post(
+                `${ VITE_API_URL }/user/sign-up`,
+                USER_DATA,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }
+            )
+        },
+        onSuccess () {
+            toast.success(
+                `"${ USER_INFO?.firstName }" has been created`
+            )
+
+            if (photoRef.current) {
+                photoRef.current.value = ''
+            }
+
+            setUserInfo(undefined)
+        },
+        onError (ERROR: any) {
+            console.log('Sign Up - ERROR: ', ERROR)
+        }
+    })
     const handleChangeInput = (EVENT: ChangeEvent<HTMLInputElement>) => {
         const TARGET = EVENT.target
         const IS_PICTURE = TARGET.name === 'picturePath'
@@ -29,40 +59,18 @@ export function SignUpPage (): JSX.Element {
     }
     const handleSubmit = async (EVENT: FormEvent<HTMLFormElement>) => {
         EVENT.preventDefault()
-
-        try {
-            const FORM_DATA = new FormData()
-            const { VITE_API_URL } = import.meta.env
-
-            for (let USER_INFO_KEY in USER_INFO) {
-                FORM_DATA.append(
-                    USER_INFO_KEY,
-                    USER_INFO[ USER_INFO_KEY as keyof UserInfo ]
-                )
-            }
-
-            await axios.post(
-                `${ VITE_API_URL }/user/sign-up`,
-                USER_INFO,
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                }
-            )
-            setUserInfo(undefined)
-
-            if (photoRef.current) {
-                photoRef.current.value = ''
-            }
-        } catch (ERROR: any) {
-            console.error(ERROR)
-        }
+        mutation.mutate(USER_INFO as UserInfo)
     }
+    const DISABLED_FORM_BUTTON = !Boolean(
+        USER_INFO?.email &&
+        USER_INFO?.password &&
+        USER_INFO.firstName &&
+        USER_INFO.lastName
+    )
 
     return (
         <main
-            className="max-w-[450px] mt-[3%] mx-auto p-5 shadow-md border-[1px] rounded-md"
+            className="max-w-[450px] mt-[3%] mx-auto p-5 pb-10 shadow-md border-[1px] rounded-md"
         >
             <h1
                 data-testid="sign-up-heading"
@@ -158,6 +166,7 @@ export function SignUpPage (): JSX.Element {
                 <FormButton
                     type="submit"
                     label="Submit"
+                    disabled={ DISABLED_FORM_BUTTON }
                 />
             </form>
         </main>

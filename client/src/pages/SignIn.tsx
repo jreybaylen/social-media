@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react'
@@ -13,24 +14,31 @@ type SignInForm = {
     password: string
 }
 
+type ResultData = {
+    data: any
+}
+
 export function SignInPage (): JSX.Element {
     const navigate = useNavigate()
     const { AUTH_USER, queryClient } = useAuth()
     const [ CREDENTIALS, setCredentials ] = useState<SignInForm>()
     const mutation = useMutation({
-        async mutationFn (credentials: SignInForm) {
+        async mutationFn (USER_CREDENTIALS: SignInForm) {
             const { VITE_API_URL } = import.meta.env
             const API_URL = `${ VITE_API_URL }/auth/sign-in`
 
-            return await axios.post(API_URL, credentials)
+            return await axios.post(API_URL, USER_CREDENTIALS)
         },
-        onSuccess (result) {
+        onSuccess (RESULT: ResultData) {
             queryClient.setQueryData(
                 [ 'authUser' ],
                 function () {
-                    return result.data
+                    return RESULT.data
                 }
             )
+        },
+        onError (ERROR: any) {
+            console.log('Sign In - ERROR: ', ERROR)
         }
     })
     const handleChangeInput = (EVENT: ChangeEvent<HTMLInputElement>) => {
@@ -44,6 +52,14 @@ export function SignInPage (): JSX.Element {
     const handleSubmit = (EVENT: FormEvent<HTMLFormElement>) => {
         EVENT.preventDefault()
 
+        if (!Boolean(CREDENTIALS?.email && CREDENTIALS?.password)) {
+            toast.error(
+                `"${ !Boolean(CREDENTIALS?.email) ? 'Email' : 'Password' }" is required`
+            )
+
+            return
+        }
+
         mutation.mutateAsync(CREDENTIALS as SignInForm).then(() => {
             setCredentials(undefined)
             navigate('/', { replace: true })
@@ -54,11 +70,11 @@ export function SignInPage (): JSX.Element {
         if (Boolean(AUTH_USER)) {
             navigate('/', { replace: true })
         }
-    }, [ AUTH_USER ])
+    }, [])
 
     return (
         <main
-            className="max-w-[400px] mt-[10%] mx-auto pt-5 px-8 pb-8 shadow-md border-[1px] rounded-md"
+            className="max-w-[400px] mt-[10%] mx-auto pt-5 px-8 pb-10 shadow-md border-[1px] rounded-md"
         >
             <h1
                 data-testid="sign-up-heading"

@@ -17,6 +17,7 @@ module.exports = {
 			axiformaBold: 'var(--font-bold)'
 		},
 		backgroundColor: {
+			disabled: 'var(--bg-disabled)',
 			secondary: 'var(--bg-secondary)'
 		},
 		extend: {}

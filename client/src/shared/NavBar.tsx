@@ -37,7 +37,7 @@ export function Navbar (): JSX.Element {
                         <li>
                             <button
                                 onClick={ handleSignOut }
-                                className="px-4 py-2 rounded-md border-[1px]"
+                                className="p-4 px-8 rounded-[8px] border-[1px]"
                             >
                                 Sign Out
                             </button>

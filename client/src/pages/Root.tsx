@@ -1,3 +1,4 @@
+import { ToastContainer } from 'react-toastify'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { Navbar } from '@shared/NavBar'
@@ -11,6 +12,7 @@ export default function Root (): JSX.Element {
     return (
         <BrowserRouter>
             <Navbar />
+			<ToastContainer />
             <Routes>
                 <Route
                     path="/sign-in"

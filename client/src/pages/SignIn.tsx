@@ -5,6 +5,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react'
 
 import { useAuth } from '@hooks/auth'
+import type { AxiosResponse, AxiosError } from 'axios'
 
 import FormInput from '@components/Input'
 import FormButton from '@components/Button'
@@ -14,9 +15,11 @@ type SignInForm = {
     password: string
 }
 
-type ResultData = {
-    data: any
+type ErrorResponse = {
+    error: string
 }
+
+const toastId = 'signInForm'
 
 export function SignInPage (): JSX.Element {
     const navigate = useNavigate()
@@ -29,7 +32,7 @@ export function SignInPage (): JSX.Element {
 
             return await axios.post(API_URL, USER_CREDENTIALS)
         },
-        onSuccess (RESULT: ResultData) {
+        onSuccess (RESULT: AxiosResponse) {
             queryClient.setQueryData(
                 [ 'authUser' ],
                 function () {
@@ -37,8 +40,13 @@ export function SignInPage (): JSX.Element {
                 }
             )
         },
-        onError (ERROR: any) {
-            console.log('Sign In - ERROR: ', ERROR)
+        onError (ERROR: AxiosError<ErrorResponse>) {
+            if (ERROR.response?.data.error) {
+                toast.error(
+                    ERROR.response?.data.error,
+                    { toastId }
+                )
+            }
         }
     })
     const handleChangeInput = (EVENT: ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +62,8 @@ export function SignInPage (): JSX.Element {
 
         if (!Boolean(CREDENTIALS?.email && CREDENTIALS?.password)) {
             toast.error(
-                `"${ !Boolean(CREDENTIALS?.email) ? 'Email' : 'Password' }" is required`
+                `"${ !Boolean(CREDENTIALS?.email) ? 'Email' : 'Password' }" is required`,
+                { toastId }
             )
 
             return

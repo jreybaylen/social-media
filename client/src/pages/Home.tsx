@@ -1,6 +1,8 @@
+import { useOutletContext } from 'react-router-dom'
+
+import { Ads } from '@containers/Ads'
 import { Profile } from '@containers/Profile'
 import { NewsFeed } from '@containers/NewsFeed'
-import { useOutletContext } from 'react-router-dom'
 
 export function HomePage (): JSX.Element {
     const outletContext = useOutletContext()
@@ -11,6 +13,7 @@ export function HomePage (): JSX.Element {
         >
             <Profile />
             <NewsFeed />
+            <Ads />
         </div>
     )
 }

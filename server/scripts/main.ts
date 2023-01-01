@@ -35,9 +35,9 @@ app.use(
     })
 )
 app.use(
-    '/assets',
+    '/images',
     express.static(
-        path.join(__dirname, 'public/assets')
+        path.join(__dirname, '../images')
     )
 )
 app.use('/auth', authRouter)

@@ -9,7 +9,7 @@ type TextField = {
 export default function Input (
     props: TextField & InputHTMLAttributes<HTMLInputElement>
 ): JSX.Element {
-    const { testId, inputId, inputLabel, ...rest } = props
+    const { testId, inputId, inputLabel, className, ...rest } = props
 
     return (
         <div
@@ -25,7 +25,7 @@ export default function Input (
                 { ...rest }
                 id={ inputId }
                 data-testid={ testId }
-                className="px-3 py-2 mt-1 w-full border-[1px] rounded"
+                className={ `px-3 py-2 mt-1 w-full border-[1px] rounded ${ className }` }
             />
         </div>
     )

@@ -1,7 +1,7 @@
 export function Profile (): JSX.Element {
     return (
         <aside
-            className="px-3"
+            className="p-3 w-[25%]"
         >
             Profile Aside
         </aside>

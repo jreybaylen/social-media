@@ -513,6 +513,34 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.right-0 {
+  right: 0px;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.top-\[160px\] {
+  top: 160px;
+}
+
 .m-auto {
   margin: auto;
 }
@@ -548,6 +576,10 @@ video {
   margin-left: auto;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -578,6 +610,22 @@ video {
 
 .mt-5 {
   margin-top: 1.25rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.mt-\[90px\] {
+  margin-top: 90px;
+}
+
+.mt-\[95px\] {
+  margin-top: 95px;
 }
 
 .block {
@@ -684,6 +732,11 @@ video {
   background-color: var(--bg-secondary);
 }
 
+.bg-\[\#fff\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .p-3 {
   padding: 0.75rem;
 }
@@ -715,13 +768,18 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
 }
 
-.pt-3 {
-  padding-top: 0.75rem;
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .pt-5 {
@@ -738,6 +796,10 @@ video {
 
 .font-axiformaBold {
   font-family: var(--font-bold);
+}
+
+.font-axiformaRegular {
+  font-family: var(--font-regular);
 }
 
 .text-\[18px\] {
@@ -776,6 +838,12 @@ video {
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.shadow-sm {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .shadow-md {
@@ -822,10 +890,16 @@ video {
   --bg-secondary: #4d96d1;
   --bg-tertiary: #0f4888;
   --white: #fff;
+  --gray-step-0: #fafafa;
   --gray-step-1: #ebebeb;
   --font-regular: 'Axiforma-Regular';
   --font-semibold: 'Axiforma-SemiBold';
   --font-bold: 'Axiforma-Bold';
+}
+
+html,
+body {
+  background: var(--gray-step-1);
 }
 
 * {
@@ -839,7 +913,7 @@ button.bg-disabled {
 }
 
 button:not(.bg-disabled):hover {
-  background: var(--gray-step-1);
+  background: var(--gray-step-0);
 }
 
 button.bg-secondary:not(.bg-disabled):hover {

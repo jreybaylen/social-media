@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken'
+import * as jwt from 'jsonwebtoken'
 
 import type { MongooseError } from 'mongoose'
 import type { JwtPayload } from 'jsonwebtoken'

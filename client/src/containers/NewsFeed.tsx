@@ -1,8 +1,15 @@
+import axios from 'axios'
+import { useState } from 'react'
 import { useAuth } from '@hooks/auth'
-import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+import { useMutation, useQuery } from '@tanstack/react-query'
+
+import type { FormEvent, ChangeEvent } from 'react'
+import { API_POSTS, PROFILE_IMG } from '@config/constants'
 
 import { Card } from './Card'
 import { ImageCircle } from './ImageCircle'
+import FormButton from '@components/Button'
 import FormTextArea from '@components/TextArea'
 
 type NewsFeedPost = {
@@ -17,24 +24,62 @@ type NewsFeedPost = {
 
 export function NewsFeed (): JSX.Element {
     const { AUTH_USER } = useAuth()
-    const [ NEWSFEED_POSTS, setNewsFeedPosts ] = useState<Array<NewsFeedPost>>([])
-    const handlePostSubmit = () => {
-        alert(123)
+    const [ POST, setPost ] = useState<string>('')
+    const HEADERS = {
+        headers: {
+            Authorization: AUTH_USER.token
+        }
     }
-
-    useEffect(() => {
-        setNewsFeedPosts([
-            {
-                _id: '123123123',
-                firstName: 'John',
-                lastName: 'Doe',
-                description: 'This is a test',
-                picturePath: 'https://images.ctfassets.net/lh3zuq09vnm2/yBDals8aU8RWtb0xLnPkI/19b391bda8f43e16e64d40b55561e5cd/How_tracking_user_behavior_on_your_website_can_improve_customer_experience.png',
-                location: 'San Fran, CA',
-                occupation: 'Software Engineer'
+    const query = useQuery({
+        queryKey: [ 'newsFeed' ],
+        async queryFn () {
+            if (AUTH_USER.token) {
+                return (await axios.get(API_POSTS, HEADERS)).data  
             }
-        ])
-    }, [])
+
+            return []
+        }
+    })
+    const mutation = useMutation({
+        async mutationFn (DESCRIPTION: string) {
+            const { _id, picturePath } = AUTH_USER.user._doc
+
+            return await (
+                axios.post(
+                    `${ API_POSTS }/create`,
+                    {
+                        picturePath,
+                        userId: _id,
+                        description: DESCRIPTION
+                    },
+                    HEADERS
+                )
+            )
+        },
+        onSuccess() {
+            query.refetch()
+        },
+        onError () {
+            toast.error(
+                'Oops! Something went wrong. Try again',
+                { toastId: 'newsFeedForm' }
+            )
+        }
+    })
+    const handleChangeDescription = (EVENT: ChangeEvent<HTMLTextAreaElement>) => {
+        setPost(
+            EVENT.target.value
+        )
+    }
+    const handlePostSubmit = (EVENT: FormEvent<HTMLFormElement>) => {
+        EVENT.preventDefault()
+
+        mutation.mutateAsync(POST).then(
+            () => {
+                setPost('')
+            }
+        )
+    }
 
     return (
         <section
@@ -42,25 +87,38 @@ export function NewsFeed (): JSX.Element {
         >
             <form
                 onSubmit={ handlePostSubmit }
-                className="flex flex-row mb-3"
+                className="flex flex-row mb-3 bg-[#fff] px-3 py-5 rounded-md shadow-sm"
             >
                 <ImageCircle
-                    src={ `${ import.meta.env.VITE_API_URL }/public/images/${ AUTH_USER.user._doc.picturePath }` }
+                    src={ `${ PROFILE_IMG }/${ AUTH_USER.user._doc.picturePath }` }
                 />
-                <FormTextArea
-                    testId="newsfeed-input"
-                    inputId="newsfeed-input"
-                    placeholder="What's on your mind?"
-                    className="resize-none mt-0 block flex-1"
-                />
+                <div
+                    className="flex-1"
+                >
+                    <>
+                        <FormTextArea
+                            value={ POST }
+                            testId="newsfeed-input"
+                            inputId="newsfeed-input"
+                            placeholder="What's on your mind?"
+                            onChange={ handleChangeDescription }
+                            className="resize-none mt-0 block w-full"
+                        />
+                        <FormButton
+                            label="Post"
+                            disabled={ !Boolean(POST) }
+                            className="py-2 text-[14px] font-axiformaRegular"
+                        />
+                    </>
+                </div>
             </form>
-            { NEWSFEED_POSTS.map(
+            { query.data?.map(
                 (NEWSFEED_POST: NewsFeedPost) => (
                     <Card
                         key={ NEWSFEED_POST._id }
-                        profile={ NEWSFEED_POST.picturePath }
                         content={ NEWSFEED_POST.description }
                         subHeader={ NEWSFEED_POST.occupation }
+                        profile={ `${ PROFILE_IMG }/${ NEWSFEED_POST.picturePath }` }
                         header={ `${ NEWSFEED_POST.firstName } ${ NEWSFEED_POST.lastName }` }
                     />
                 )

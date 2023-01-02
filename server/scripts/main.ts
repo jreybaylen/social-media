@@ -9,7 +9,7 @@ import * as bodyParser from 'body-parser'
 
 import userRoutes from '@routes/user'
 import authRouter from '@routes/auth'
-import postsRouter from '@routes/auth'
+import postsRouter from '@routes/post'
 
 const app = express()
 

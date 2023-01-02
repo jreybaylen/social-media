@@ -17,7 +17,7 @@ export function Navbar (): JSX.Element {
 
     return (
         <header
-            className="shadow py-3"
+            className="shadow py-3 bg-[#fff] fixed left-0 right-0 top-0"
         >
             <nav
                 className="flex flex-row max-w-5xl w-full m-auto items-center"

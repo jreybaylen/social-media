@@ -9,7 +9,7 @@ export function HomePage (): JSX.Element {
 
     return (
         <div
-            className="flex flex-row"
+            className="flex flex-row mb-5 mt-[95px]"
         >
             <Profile />
             <NewsFeed />

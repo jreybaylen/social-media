@@ -15,7 +15,7 @@ export async function newsFeedPosts (
     res: Response
 ) {
     try {
-        const posts = await PostModel.find()
+        const posts = await PostModel.find().sort({ updatedAt: -1 })
 
         res.status(200).json(posts)
     } catch (ERROR: any) {
@@ -97,7 +97,7 @@ export async function createFeedPost (
 
             const posts = await PostModel.find()
 
-            res.status(201).json(posts)
+            return res.status(201).json(posts)
         }
 
         res.status(500).json({

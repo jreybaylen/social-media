@@ -1,5 +1,10 @@
 @import './theme/default.css';
 
+html,
+body {
+    background: var(--gray-step-1);
+}
+
 * {
     box-sizing: border-box;
     color: var(--text-color);
@@ -11,7 +16,7 @@ button.bg-disabled {
 }
 
 button:not(.bg-disabled):hover {
-    background: var(--gray-step-1);
+    background: var(--gray-step-0);
 }
 
 button.bg-secondary:not(.bg-disabled):hover {

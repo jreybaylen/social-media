@@ -7,27 +7,27 @@ type CardDetails = {
     subHeader: string
 }
 
-export function Card (props: CardDetails): JSX.Element {
+export function Card (PROPS: CardDetails): JSX.Element {
     return (
         <section
-            className="pt-3 border-[1px] rounded-md overflow-hidden"
+            className="pt-4 mt-4 shadow-sm rounded-md overflow-hidden bg-[#fff]"
         >
             <div
                 className="px-3 flex flex-row"
             >
                 <ImageCircle
-                    src={ props.profile }
+                    src={ PROPS.profile }
                 />
                 <div>
                     <h2
                         className="font-axiformaBold"
                     >
-                        { props.header }
+                        { PROPS.header }
                     </h2>
                     <p
                         className="text-[12px]"
                     >
-                        { props.subHeader }
+                        { PROPS.subHeader }
                     </p>
                 </div>
             </div>
@@ -37,7 +37,7 @@ export function Card (props: CardDetails): JSX.Element {
                 <h3
                     className="ml-3"
                 >
-                    { props.content }
+                    { PROPS.content }
                 </h3>
             </div>
             <div

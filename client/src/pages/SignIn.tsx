@@ -1,10 +1,12 @@
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
-import { useState, useEffect, ChangeEvent, FormEvent } from 'react'
 
 import { useAuth } from '@hooks/auth'
+import { API_HOST } from '@config/constants'
+import type { ChangeEvent, FormEvent } from 'react'
 import type { AxiosResponse, AxiosError } from 'axios'
 
 import FormInput from '@components/Input'
@@ -27,10 +29,7 @@ export function SignInPage (): JSX.Element {
     const [ CREDENTIALS, setCredentials ] = useState<SignInForm>()
     const mutation = useMutation({
         async mutationFn (USER_CREDENTIALS: SignInForm) {
-            const { VITE_API_URL } = import.meta.env
-            const API_URL = `${ VITE_API_URL }/auth/sign-in`
-
-            return await axios.post(API_URL, USER_CREDENTIALS)
+            return await axios.post(`${ API_HOST }/auth/sign-in`, USER_CREDENTIALS)
         },
         onSuccess (RESULT: AxiosResponse) {
             queryClient.setQueryData(
@@ -83,7 +82,7 @@ export function SignInPage (): JSX.Element {
 
     return (
         <main
-            className="max-w-[400px] mt-[10%] mx-auto pt-5 px-8 pb-10 shadow-md border-[1px] rounded-md"
+            className="max-w-[400px] mt-[10%] mx-auto pt-5 px-8 pb-10 shadow-md border-[1px] rounded-md bg-[#fff]"
         >
             <h1
                 data-testid="sign-up-heading"

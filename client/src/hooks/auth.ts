@@ -4,6 +4,7 @@ type UserAuth = {
     token: string
     user: {
         _doc: {
+            _id: string
             email: string
             createdAt: string
             firstName: string

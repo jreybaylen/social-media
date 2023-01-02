@@ -1,7 +1,10 @@
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { useRef, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
-import { useRef, useState, ChangeEvent, FormEvent } from 'react'
+
+import { API_USER } from '@config/constants'
+import type { ChangeEvent, FormEvent } from 'react'
 
 import FormInput from '@components/Input'
 import FormButton from '@components/Button'
@@ -16,14 +19,15 @@ type UserInfo = {
     picturePath: string
 }
 
+const toastId = 'signUpForm'
+
 export function SignUpPage (): JSX.Element {
     const photoRef = useRef<HTMLInputElement>(null)
     const [ USER_INFO, setUserInfo ] = useState<UserInfo>()
     const mutation = useMutation({
         async mutationFn (USER_DATA: UserInfo) {
-            const { VITE_API_URL } = import.meta.env
             return await axios.post(
-                `${ VITE_API_URL }/user/sign-up`,
+                `${ API_USER }/sign-up`,
                 USER_DATA,
                 {
                     headers: {
@@ -34,7 +38,8 @@ export function SignUpPage (): JSX.Element {
         },
         onSuccess () {
             toast.success(
-                `"${ USER_INFO?.firstName }" has been created`
+                `"${ USER_INFO?.firstName }" has been created`,
+                { toastId }
             )
 
             if (photoRef.current) {
@@ -43,8 +48,11 @@ export function SignUpPage (): JSX.Element {
 
             setUserInfo(undefined)
         },
-        onError (ERROR: any) {
-            console.log('Sign Up - ERROR: ', ERROR)
+        onError () {
+            toast.error(
+                'Oops! Something went wrong. Try again',
+                { toastId }
+            )
         }
     })
     const handleChangeInput = (EVENT: ChangeEvent<HTMLInputElement>) => {
@@ -70,7 +78,7 @@ export function SignUpPage (): JSX.Element {
 
     return (
         <main
-            className="max-w-[450px] mt-[3%] mx-auto p-5 pb-10 shadow-md border-[1px] rounded-md"
+            className="max-w-[450px] mt-[3%] mx-auto p-5 pb-10 shadow-md border-[1px] rounded-md bg-[#fff]"
         >
             <h1
                 data-testid="sign-up-heading"

@@ -80,16 +80,18 @@ export async function createFeedPost (
     res: Response
 ) {
     try {
+        const { userId, ...rest } = req.body
         const user = await UserModel.findById(req.body.userId)
 
         if (user) {
             await (
                 new PostModel({
+                    userId,
+                    ...rest,
                     location: user.location,
                     lastName: user.lastName,
                     firstName: user.firstName,
                     userPicturePath: user.picturePath,
-                    ...req.body,
                     likes: {},
                     comments: []
                 })

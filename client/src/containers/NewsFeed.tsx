@@ -20,6 +20,7 @@ type NewsFeedPost = {
     description: string
     picturePath: string
     occupation: string
+    userPicturePath: string
 }
 
 export function NewsFeed (): JSX.Element {
@@ -56,7 +57,7 @@ export function NewsFeed (): JSX.Element {
                 )
             )
         },
-        onSuccess() {
+        onSuccess () {
             query.refetch()
         },
         onError () {
@@ -67,9 +68,7 @@ export function NewsFeed (): JSX.Element {
         }
     })
     const handleChangeDescription = (EVENT: ChangeEvent<HTMLTextAreaElement>) => {
-        setPost(
-            EVENT.target.value
-        )
+        setPost(EVENT.target.value.trimStart())
     }
     const handlePostSubmit = (EVENT: FormEvent<HTMLFormElement>) => {
         EVENT.preventDefault()
@@ -118,7 +117,7 @@ export function NewsFeed (): JSX.Element {
                         key={ NEWSFEED_POST._id }
                         content={ NEWSFEED_POST.description }
                         subHeader={ NEWSFEED_POST.occupation }
-                        profile={ `${ PROFILE_IMG }/${ NEWSFEED_POST.picturePath }` }
+                        profile={ `${ PROFILE_IMG }/${ NEWSFEED_POST.userPicturePath }` }
                         header={ `${ NEWSFEED_POST.firstName } ${ NEWSFEED_POST.lastName }` }
                     />
                 )

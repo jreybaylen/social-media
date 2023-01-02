@@ -45,7 +45,7 @@ export function NewsFeed (): JSX.Element {
                 className="flex flex-row mb-3"
             >
                 <ImageCircle
-                    src={ `${ import.meta.env.VITE_API_URL }/images/${ AUTH_USER.user._doc.picturePath }` }
+                    src={ `${ import.meta.env.VITE_API_URL }/public/images/${ AUTH_USER.user._doc.picturePath }` }
                 />
                 <FormTextArea
                     testId="newsfeed-input"

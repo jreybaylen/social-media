@@ -10,7 +10,7 @@ export const upload = multer({
             __: object,
             next: (param: any, storage: string) => void
         ) {
-            next(null, 'images')
+            next(null, 'public/images')
         },
         filename (
             _: Request,

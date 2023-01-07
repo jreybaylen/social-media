@@ -32,6 +32,10 @@ export function SignInPage (): JSX.Element {
             return await axios.post(`${ API_HOST }/auth/sign-in`, USER_CREDENTIALS)
         },
         onSuccess (RESULT: AxiosResponse) {
+            localStorage.setItem(
+                'authUser',
+                JSON.stringify(RESULT.data)
+            )
             queryClient.setQueryData(
                 [ 'authUser' ],
                 function () {
@@ -82,7 +86,7 @@ export function SignInPage (): JSX.Element {
 
     return (
         <main
-            className="max-w-[400px] mt-[10%] mx-auto pt-5 px-8 pb-10 shadow-md border-[1px] rounded-md bg-[#fff]"
+            className="max-w-[400px] mt-[15%] mx-auto pt-5 px-8 pb-10 shadow-md border-[1px] rounded-md bg-[#fff]"
         >
             <h1
                 data-testid="sign-up-heading"

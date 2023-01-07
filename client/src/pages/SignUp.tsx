@@ -78,7 +78,7 @@ export function SignUpPage (): JSX.Element {
 
     return (
         <main
-            className="max-w-[450px] mt-[3%] mx-auto p-5 pb-10 shadow-md border-[1px] rounded-md bg-[#fff]"
+            className="max-w-[450px] mt-[8%] mx-auto p-5 pb-10 shadow-md border-[1px] rounded-md bg-[#fff]"
         >
             <h1
                 data-testid="sign-up-heading"

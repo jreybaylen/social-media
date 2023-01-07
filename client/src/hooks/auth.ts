@@ -25,7 +25,9 @@ type UserAuth = {
 
 export function useAuth () {
     const queryClient = useQueryClient()
-    const AUTH_USER = queryClient.getQueryData([ 'authUser' ]) as UserAuth
+    const AUTH_USER_STORAGE = localStorage.getItem('authUser') || ''
+    const AUTH_USER_QUERY = queryClient.getQueryData([ 'authUser' ]) as UserAuth
+    const AUTH_USER = AUTH_USER_QUERY || (AUTH_USER_STORAGE ? JSON.parse(AUTH_USER_STORAGE) : '')
 
     return {
         AUTH_USER,

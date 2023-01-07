@@ -2,6 +2,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
+            "@tests/*": [ "src/__tests__/*" ],
             "@assets/*": [ "src/assets/*" ],
             "@components/*": [ "src/components/*" ],
             "@config/*": [ "src/config/*" ],

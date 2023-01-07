@@ -174,6 +174,7 @@ export function SignUpPage (): JSX.Element {
                 <FormButton
                     type="submit"
                     label="Submit"
+                    testId="sign-up-submit"
                     disabled={ DISABLED_FORM_BUTTON }
                 />
             </form>

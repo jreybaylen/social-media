@@ -560,11 +560,6 @@ video {
   margin-right: 0.5rem;
 }
 
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -617,20 +612,12 @@ video {
   margin-bottom: 0.25rem;
 }
 
-.mt-\[95px\] {
-  margin-top: 95px;
-}
-
 .mr-2 {
   margin-right: 0.5rem;
 }
 
-.mb-\[8px\] {
-  margin-bottom: 8px;
-}
-
-.mb-\[4px\] {
-  margin-bottom: 4px;
+.mt-\[95px\] {
+  margin-top: 95px;
 }
 
 .block {
@@ -871,10 +858,6 @@ video {
   font-size: 30px;
 }
 
-.text-\[16px\] {
-  font-size: 16px;
-}
-
 .uppercase {
   text-transform: uppercase;
 }
@@ -899,10 +882,6 @@ video {
 
 .text-primary {
   color: var(--text-primary);
-}
-
-.underline {
-  text-decoration-line: underline;
 }
 
 .opacity-60 {
@@ -1023,20 +1002,12 @@ button.bg-secondary:not(.bg-disabled):hover {
   font-family: var(--font-regular);
 }
 
-.hover\:text-primary:hover {
-  color: var(--text-primary);
-}
-
 .hover\:underline:hover {
   text-decoration-line: underline;
 }
 
 .hover\:decoration-1:hover {
   text-decoration-thickness: 1px;
-}
-
-.hover\:decoration-2:hover {
-  text-decoration-thickness: 2px;
 }
 
 .hover\:opacity-100:hover {

@@ -550,14 +550,19 @@ video {
   margin-bottom: 0.75rem;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .mt-3 {
@@ -572,12 +577,8 @@ video {
   margin-top: 0.25rem;
 }
 
-.ml-auto {
-  margin-left: auto;
-}
-
-.mt-4 {
-  margin-top: 1rem;
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .ml-3 {
@@ -588,24 +589,12 @@ video {
   margin-right: 0.75rem;
 }
 
-.mt-0 {
-  margin-top: 0px;
-}
-
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-
-.mt-\[95px\] {
-  margin-top: 95px;
-}
-
 .mt-\[15\%\] {
   margin-top: 15%;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
+.mb-5 {
+  margin-bottom: 1.25rem;
 }
 
 .mt-\[8\%\] {
@@ -614,6 +603,34 @@ video {
 
 .mt-5 {
   margin-top: 1.25rem;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mt-0 {
+  margin-top: 0px;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mt-\[95px\] {
+  margin-top: 95px;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.mb-\[8px\] {
+  margin-bottom: 8px;
+}
+
+.mb-\[4px\] {
+  margin-bottom: 4px;
 }
 
 .block {
@@ -636,12 +653,16 @@ video {
   height: 100%;
 }
 
-.w-full {
-  width: 100%;
+.h-\[100\%\] {
+  height: 100%;
 }
 
-.w-\[25\%\] {
-  width: 25%;
+.h-\[200px\] {
+  height: 200px;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .w-\[20px\] {
@@ -652,8 +673,20 @@ video {
   width: 40px;
 }
 
+.w-\[25\%\] {
+  width: 25%;
+}
+
 .w-\[50\%\] {
   width: 50%;
+}
+
+.w-\[200px\] {
+  width: 200px;
+}
+
+.w-\[100\%\] {
+  width: 100%;
 }
 
 .max-w-\[400px\] {
@@ -708,8 +741,16 @@ video {
   border-radius: 9999px;
 }
 
+.rounded-\[100\%\] {
+  border-radius: 100%;
+}
+
 .border-\[1px\] {
   border-width: 1px;
+}
+
+.border-2 {
+  border-width: 2px;
 }
 
 .border-t-\[1px\] {
@@ -733,10 +774,6 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.p-3 {
-  padding: 0.75rem;
-}
-
 .p-\[1px\] {
   padding: 1px;
 }
@@ -747,6 +784,14 @@ video {
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
 }
 
 .py-3 {
@@ -764,14 +809,14 @@ video {
   padding-bottom: 0.5rem;
 }
 
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .pt-4 {
@@ -784,6 +829,10 @@ video {
 
 .pb-10 {
   padding-bottom: 2.5rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 .font-axiformaSemibold {
@@ -822,6 +871,10 @@ video {
   font-size: 30px;
 }
 
+.text-\[16px\] {
+  font-size: 16px;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
@@ -842,6 +895,14 @@ video {
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.underline {
+  text-decoration-line: underline;
 }
 
 .opacity-60 {
@@ -891,6 +952,9 @@ video {
 }
 
 :root {
+  --text-primary: #1f64b1;
+  --text-secondary: #4d96d1;
+  --text-tertiary: #0f4888;
   --text-color: #505050;
   --text-color-disabled: #aaa;
   --bg-disabled: #dadada;
@@ -957,6 +1021,22 @@ button.bg-secondary:not(.bg-disabled):hover {
 
 .file\:font-axiformaRegular::file-selector-button {
   font-family: var(--font-regular);
+}
+
+.hover\:text-primary:hover {
+  color: var(--text-primary);
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
+}
+
+.hover\:decoration-1:hover {
+  text-decoration-thickness: 1px;
+}
+
+.hover\:decoration-2:hover {
+  text-decoration-thickness: 2px;
 }
 
 .hover\:opacity-100:hover {

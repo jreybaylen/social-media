@@ -7,8 +7,8 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import type { FormEvent, ChangeEvent } from 'react'
 import { API_POSTS, PROFILE_IMG } from '@config/constants'
 
-import { Card } from './Card'
-import { ImageCircle } from './ImageCircle'
+import { Card } from '../../containers/Card'
+import { ImageCircle } from '../../containers/ImageCircle'
 import FormButton from '@components/Button'
 import FormTextArea from '@components/TextArea'
 

@@ -21,6 +21,9 @@
 }
 
 :root {
+    --text-primary: #1f64b1;
+    --text-secondary: #4d96d1;
+    --text-tertiary: #0f4888;
     --text-color: #505050;
     --text-color-disabled: #aaa;
 

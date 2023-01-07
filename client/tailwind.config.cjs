@@ -20,7 +20,13 @@ module.exports = {
 			disabled: 'var(--bg-disabled)',
 			secondary: 'var(--bg-secondary)'
 		},
-		extend: {}
+		extend: {
+			colors: {
+				primary: 'var(--text-primary)',
+				secondary: 'var(--text-secondary)',
+				tertiary: 'var(--text-tertiary)'
+			}
+		}
 	},
 	plugins: []
 }

@@ -6,13 +6,15 @@ export function Navbar (): JSX.Element {
     const navigate = useNavigate()
     const { AUTH_USER, queryClient } = useAuth()
     const handleSignOut = async () => {
-        await queryClient.resetQueries({
+        localStorage.removeItem('authUser')
+        queryClient.resetQueries({
             queryKey: [ 'authUser' ]
+        }).then(() => {
+            navigate(
+                '/sign-in',
+                { replace: true }
+            )
         })
-        navigate(
-            '/sign-in',
-            { replace: true }
-        )
     }
 
     return (

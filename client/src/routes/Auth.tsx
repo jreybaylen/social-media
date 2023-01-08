@@ -16,7 +16,7 @@ export function AuthRoute (): JSX.Element {
 
     return (
         <main
-            className="max-w-5xl w-full mt-5 mx-auto"
+            className="max-w-7xl w-full mt-5 mx-auto"
         >
             <Outlet
                 context={ AUTH_USER }

@@ -10,7 +10,7 @@ type CardDetails = {
 export function Card (PROPS: CardDetails): JSX.Element {
     return (
         <section
-            className="pt-4 mt-2 shadow-sm rounded-md overflow-hidden bg-[#fff]"
+            className="pt-4 mt-4 shadow-sm rounded-md overflow-hidden bg-[#fff]"
         >
             <div
                 className="px-3 flex flex-row relative"

@@ -82,7 +82,7 @@ export function NewsFeed (): JSX.Element {
 
     return (
         <section
-            className="mx-2 w-[50%]"
+            className="mx-4 w-[50%]"
         >
             <form
                 onSubmit={ handlePostSubmit }
@@ -106,6 +106,7 @@ export function NewsFeed (): JSX.Element {
                         <FormButton
                             label="Post"
                             disabled={ !Boolean(POST) }
+                            testId="newsfeed-post-submit"
                             className="py-2 text-[14px] font-axiformaRegular"
                         />
                     </>

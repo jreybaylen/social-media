@@ -1,13 +1,27 @@
-import { ImageCircle } from './ImageCircle'
+import { ImageCircle } from '@containers/ImageCircle'
+
+type CardOptionalEvent = {
+    onClose(POST_ID: string): void
+}
 
 type CardDetails = {
     header: string
+    authId: string
+    postId: string
+    userId: string
     profile: string
     content: string
     subHeader: string
-}
+} & Partial<CardOptionalEvent>
 
-export function Card (PROPS: CardDetails): JSX.Element {
+export function Post (PROPS: CardDetails): JSX.Element {
+    const DISPLAY_DELETE_POST = PROPS.authId === PROPS.userId
+    const handleClickClose = () => {
+        if (PROPS.onClose) {
+            PROPS.onClose(PROPS.postId)
+        }
+    }
+
     return (
         <section
             className="pt-4 mt-4 shadow-sm rounded-md overflow-hidden bg-[#fff]"
@@ -30,17 +44,20 @@ export function Card (PROPS: CardDetails): JSX.Element {
                         { PROPS.subHeader }
                     </p>
                 </div>
-                <button
-                    className="opacity-60 hover:opacity-100 absolute top-0 right-[10px] text-[20px] font-axiformaSemibold w-[20px] h-[20px] leading-[20px] cursor-pointer rounded-md"
-                >
-                    &times;
-                </button>
+                { DISPLAY_DELETE_POST && (
+                    <button
+                        onClick={ handleClickClose }
+                        className="opacity-60 hover:opacity-100 absolute top-0 right-[10px] text-[20px] font-axiformaSemibold w-[20px] h-[20px] leading-[20px] cursor-pointer rounded-md"
+                    >
+                        &times;
+                    </button>
+                ) }
             </div>
             <div
                 className="my-3"
             >
                 <pre
-                    className="ml-3 font-axiformaRegular"
+                    className="mx-4 font-axiformaRegular"
                 >
                     { PROPS.content }
                 </pre>

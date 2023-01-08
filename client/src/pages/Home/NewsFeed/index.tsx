@@ -7,13 +7,14 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import type { FormEvent, ChangeEvent } from 'react'
 import { API_POSTS, PROFILE_IMG } from '@config/constants'
 
-import { Card } from '../../containers/Card'
-import { ImageCircle } from '../../containers/ImageCircle'
+import { Post } from './Post'
+import { ImageCircle } from '@containers/ImageCircle'
 import FormButton from '@components/Button'
 import FormTextArea from '@components/TextArea'
 
 type NewsFeedPost = {
     _id: string
+    userId: string
     lastName: string
     location: string
     firstName: string
@@ -79,6 +80,9 @@ export function NewsFeed (): JSX.Element {
             }
         )
     }
+    const handleDeletePost = (POST_ID: string) => {
+        console.log('POST_ID: ', POST_ID)
+    }
 
     return (
         <section
@@ -114,10 +118,14 @@ export function NewsFeed (): JSX.Element {
             </form>
             { query.data?.map(
                 (NEWSFEED_POST: NewsFeedPost) => (
-                    <Card
+                    <Post
                         key={ NEWSFEED_POST._id }
+                        postId={ NEWSFEED_POST._id }
+                        onClose={ handleDeletePost }
+                        userId={ NEWSFEED_POST.userId }
+                        authId={ AUTH_USER.user._doc._id }
+                        subHeader={ NEWSFEED_POST.location }
                         content={ NEWSFEED_POST.description }
-                        subHeader={ NEWSFEED_POST.occupation }
                         profile={ `${ PROFILE_IMG }/${ NEWSFEED_POST.userPicturePath }` }
                         header={ `${ NEWSFEED_POST.firstName } ${ NEWSFEED_POST.lastName }` }
                     />

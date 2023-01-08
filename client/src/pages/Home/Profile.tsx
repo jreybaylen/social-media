@@ -8,6 +8,7 @@ import { PROFILE_IMG } from '@config/constants'
 export function Profile (): JSX.Element {
     const { AUTH_USER } = useAuth()
     const USER_INFO = AUTH_USER.user._doc
+    const FRIENDS_COUNT = USER_INFO.friends.length
     const FULL_NAME = `${ USER_INFO.firstName } ${ USER_INFO.lastName }`
 
     return (
@@ -33,7 +34,12 @@ export function Profile (): JSX.Element {
                         <p
                             className="text-[14px]"
                         >
-                            { USER_INFO.friends.length } Friends
+                            <Link
+                                to={ FRIENDS_COUNT ? '/friends' : '#' }
+                                className={ FRIENDS_COUNT ? 'hover:underline' : 'cursor-default' }
+                            >
+                                { FRIENDS_COUNT } Friends
+                            </Link>
                         </p>
                     </div>
                 </div>

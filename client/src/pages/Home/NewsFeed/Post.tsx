@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { ImageCircle } from '@containers/ImageCircle'
 
 type CardOptionalEvent = {
@@ -29,14 +31,23 @@ export function Post (PROPS: CardDetails): JSX.Element {
             <div
                 className="px-3 flex flex-row relative"
             >
-                <ImageCircle
-                    src={ PROPS.profile }
-                />
+                <Link
+                    to={ `/profile/${ PROPS.userId }` }
+                >
+                    <ImageCircle
+                        src={ PROPS.profile }
+                    />
+                </Link>
                 <div>
                     <h2
                         className="font-axiformaBold"
                     >
-                        { PROPS.header }
+                        <Link
+                            className="hover:underline"
+                            to={ `/profile/${ PROPS.userId }` }
+                        >
+                            { PROPS.header }
+                        </Link>
                     </h2>
                     <p
                         className="text-[12px]"
